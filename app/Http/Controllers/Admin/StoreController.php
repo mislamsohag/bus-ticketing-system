@@ -1,19 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Upload;
+namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class BusUploadController extends Controller
+class StoreController extends Controller
 {
-    function AddBusShow(){
-        return view('Backend.Pages.Management.add-bus');
-    }
-    
-      // Product Add
-      function BusStore(Request $request){
+    // Product Add
+    function Store(Request $request){
 
         // dd($request->all()); 
         

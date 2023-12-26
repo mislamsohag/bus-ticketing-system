@@ -2,15 +2,14 @@
 
 
 use App\Http\Controllers\Admin\AdminHomeController;
+use App\Http\Controllers\Admin\StoreController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\BusController;
 use App\Http\Controllers\Auth\LoginController;
-use App\Http\Controllers\FileUploadController;
 use App\Http\Controllers\Auth\LogoutController;
 use App\Http\Controllers\Auth\SignUpController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\ManagementController;
-use App\Http\Controllers\Upload\BusUploadController;
 
 // Home page only for views
 Route::view("/", "FrontEnd.index");
@@ -22,9 +21,10 @@ Route::group(["prefix" => "admin"], function () {
     Route::get("/analytics", [DashboardController::class, "DashboardAnalytics"])->name('dashboard.analytics'); 
 
 
-    //Managemet Rotues
-    Route::get("/add-bus", [BusUploadController::class, "AddBusShow"])->name('add-bus');    
-    Route::post("/add-bus", [BusUploadController::class, "BusStore"])->name('bus-store');
+    //Add Bus Show Rotue
+    Route::view("/buses-add", "Backend.Pages.Management.add-bus")->name('buses-add'); 
+    
+    Route::post("/buses-store", [StoreController::class, "Store"])->name('buses-store');
         
     
     Route::get("/buses", [BusController::class, "Buses"])->name('buses');

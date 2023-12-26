@@ -1,5 +1,7 @@
 @extends('Layouts.app')
 
+@section('title', 'Busses Add')
+
 @section('content')        
     <div class="main-content">
         <div class="page-content">
@@ -9,11 +11,11 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                            <h4 class="mb-sm-0">Add Bus</h4>
+                            <h4 class="mb-sm-0">Bus Add </h4>
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Management</a></li>
-                                    <li class="breadcrumb-item active">Add Bus</li>
+                                    <li class="{{request()->routeIs('buses-add')? 'text-primary':''}} breadcrumb-item ">Add Bus</li>
                                 </ol>
                             </div>
 
@@ -28,7 +30,7 @@
                 <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
                 @endif
 
-                <form method="POST" action="{{route('bus-store')}}" enctype="multipart/form-data" id="createproduct-form" class="needs-validation" novalidate>
+                <form method="POST" action="{{route('buses-store')}}" enctype="multipart/form-data" id="createproduct-form" class="needs-validation" novalidate>
                     @csrf
                     <div class="row">
                         <div class="col-lg-8">

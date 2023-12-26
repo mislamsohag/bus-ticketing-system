@@ -14,8 +14,8 @@
         </li>
         <!-- Add Product -->
         <li class="nav-item">
-          <a href="{{route('add-bus')}}" class="nav-link" data-key="t-create-product">
-            Add Bus
+          <a href="{{route('buses-add')}}" class="{{request()->routeIs('buses-add')? 'text-primary':''}}nav-link" data-key="t-create-product">
+             Bus Add
           </a>
         </li>
         <!-- Order Product -->
