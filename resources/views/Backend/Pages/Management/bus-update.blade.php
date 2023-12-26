@@ -14,7 +14,7 @@
                             <div class="page-title-right">
                                 <ol class="breadcrumb m-0">
                                     <li class="breadcrumb-item"><a href="javascript: void(0);">Management</a></li>
-                                    <li class="breadcrumb-item ">Bus Update</li>
+                                    <li class="{{request()->routeIs('bus-update')? 'text-primary': ''}} breadcrumb-item">Bus Update</li>
                                 </ol>
                             </div>
 
@@ -39,21 +39,44 @@
 
                                     <!-- titele -->
                                     <div class="mb-3">
-                                        <label class="form-label" for="product-title-input">Product Title</label>
+                                        <label class="form-label" for="product-title-input">Bus Name</label>
                                         
-                                        <input  name="title" value="#" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
-                                        @error('title')
+                                        <input  name="busName" value="{{old('busName', $bus->busName)}}" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
+                                        @error('busName')
                                             <p class="text-danger">{{$message}}</p>
                                         @enderror
                                     </div>
-                                    <!-- description -->
-                                    <div>
-                                        <label>Product Description</label>
+                                    
+                                    <div class="mb-3">
+                                        <label>Bus Type AC or Non AC</label>
                                         <div id="ckeditor-classic">
 
-                                            <textarea name="short_desc"  type="text" class="form-control" 
-                                            placeholder="Enter product decription" required>Description</textarea>
-                                            
+                                            <input  name="busType" value="{{old('busType', $bus->busType)}}" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
+                                        @error('busType')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <label>Total Seats</label>
+                                        <div id="ckeditor-classic">
+
+                                            <input  name="totalSeat" value="{{old('totalSeat', $bus->totalSeat)}}" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
+                                        @error('totalSeat')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
+                                        </div>
+                                    </div>
+
+                                    <div class="">
+                                        <label>Bus Number</label>
+                                        <div id="ckeditor-classic">
+
+                                            <input  name="busNumber" value="{{old('busNumber', $bus->busNumber)}}" type="text" class="form-control" id="product-title-input" placeholder="Enter product title" required>
+                                        @error('busNumber')
+                                            <p class="text-danger">{{$message}}</p>
+                                        @enderror
                                         </div>
                                     </div>
                                 </div>
@@ -62,7 +85,7 @@
                             <!-- image Show and Input-->
                             <div class="card">
                                 <div class="card-header">
-                                    <h5 class="card-title mb-0">Product Image</h5>
+                                    <h5 class="card-title mb-0">Bus Image</h5>
                                 </div>
                                 <div class="card-body"> 
                                     <div class="mb-4">
@@ -70,14 +93,15 @@
                                             <div class="position-relative d-inline-block">
                                                 <div class="avatar-lg">
                                                     <div class="avatar-title bg-light rounded">
-                                                        {{-- {{asset($product->image)}} --}}
-                                                        <img src="#" id="product-img" class="avatar-md h-auto" />
+                                                        {{-- {{asset($bus->image)}} --}}
+                                                        <img src="{{asset($bus->image)}}" id="product-img" class="avatar-md h-auto" />
                                                     </div>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-control">
+
                                         <!-- Image Input -->
                                         <input name="image" type="file" >
                                         @error('image')
@@ -93,7 +117,7 @@
                                     <ul class="nav nav-tabs-custom card-header-tabs border-bottom-0" role="tablist">
                                         <li class="nav-item">
                                             <a class="nav-link active" data-bs-toggle="tab" href="#addproduct-general-info" role="tab">
-                                                General Info
+                                                Routes Information
                                             </a>
                                         </li>
                                     </ul>

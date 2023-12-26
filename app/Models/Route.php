@@ -14,4 +14,19 @@ class Route extends Model
         'routeEnd',
         'ticketPrice',
     ];
+
+    function bus(){
+        return $this->hasMany(Bus::class);
+    }
+
+    function schedule(){
+        return $this->hasOne(Schedule::class);
+    }
+    function booking(){
+        return $this->hasMany(Booking::class);
+    }
+
+    function ticket(){
+        return $this->hasMany(Ticket::class);
+    }
 }

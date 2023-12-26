@@ -15,4 +15,8 @@ class Bus extends Model
         'totalSeat',
         'busNumber'
     ];
+
+    function route(){
+        return $this->belongsTo(Route::class);
+    }
 }

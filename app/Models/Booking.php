@@ -11,4 +11,11 @@ class Booking extends Model
     protected $fillable = [
         'travelDate'
     ];
+
+    function passenger(){
+        return $this->belongsTo(Passenger::class);
+    }
+    function route(){
+        return $this->belongsTo(Route::class);
+    }
 }

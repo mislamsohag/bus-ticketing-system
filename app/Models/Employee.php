@@ -11,4 +11,13 @@ class Employee extends Model
     protected $fillable = [
         'designation'
     ];
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
+    function profile(){
+        return $this->belongsTo(Profile::class);
+    }
+
+
 }

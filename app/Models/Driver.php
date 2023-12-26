@@ -12,4 +12,12 @@ class Driver extends Model
         'designation',
         'licenseNumber'
     ];
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
+
+    function profile(){
+        return $this->belongsTo(Profile::class);
+    }
 }

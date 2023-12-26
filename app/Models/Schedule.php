@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Schedule extends Model
 {
     use HasFactory;
+
+    function route(){
+        return $this->belongsTo(Route::class);
+    }
 }

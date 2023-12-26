@@ -12,4 +12,8 @@ class Staff extends Model
         'designation',
         'licenseNumber'
     ];
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 }

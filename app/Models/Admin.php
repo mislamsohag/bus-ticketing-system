@@ -12,4 +12,8 @@ class Admin extends Model
     protected $fillable = [
         'role'
     ];
+
+    function user(){
+        return $this->belongsTo(User::class);
+    }
 }
