@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Models\Bus;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
@@ -10,29 +11,28 @@ class BusController extends Controller
 {
     // Product Show
     function Buses(){
-       
-        // dd($products); product_id
-        return view('Backend.Pages.Management.buses');
+       $buses=Bus::get();
+
+        // dd($bus);
+        return view('Backend.Pages.Management.buses',compact('buses'));
     }
 
 
     // Single Product Details
-   function ProductDetails($id){
-     /*  $product=DB::table('products')->where('id', $id)->first();
-      $brand=DB::table('brands')->where('id', $product->brand_id)->first();
-      $category=DB::table('categories')->where('id', $product->brand_id)->first(); */
+   function BusDetails($id){
+     $bus=Bus::where('id',$id)->first();
 
-        // dd($product,$brand);
-        return view('Backend.Pages.Ecom.product-details');
+        // dd($bus);
+
+        return view('Backend.Pages.Management.bus-details', compact('bus'));
     } 
 
-    public function ProductEditShow($id){
-        // $product=DB::select('select * from products where id = ?',[$id]);
-        // $product=DB::table('products')->where('id', $id)->first();
+    public function updateShow($id){        
+        $bus=Bus::findOrFail($id);
         // dd($product);
-        return view('Backend.Pages.Ecom.edit-product');
+        return view('Backend.Pages.Management.bus-update', compact('bus'));
     }
-    public function ProductUpdate(Request $request, $id){
+    public function BusUpdate(Request $request, $id){
         // dd($request->all()); 
         
         /*  $request->validate([                      
@@ -69,7 +69,7 @@ class BusController extends Controller
             'category_id'=>$request->category_id,
             'brand_id'=>$request->brand_id
         ]); */
-        return redirect('admin/products')->with('success', 'Product Upload Success!');
+        return redirect('admin/buses')->with('success', 'Product Upload Success!');
           
         } 
     

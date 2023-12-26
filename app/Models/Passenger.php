@@ -5,10 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Brand extends Model
+class Passenger extends Model
 {
-    protected $attributes=[
-        'brand_name'=>'Pran',
-        'brand_img'=>'Pran'
-    ];
+    use HasFactory;
 }

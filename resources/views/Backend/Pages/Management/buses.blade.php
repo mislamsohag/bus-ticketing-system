@@ -1,5 +1,6 @@
 @extends('Layouts.app')
 
+@section('title', 'All Buses')
 @section('content')
 <div class="main-content">
 
@@ -15,7 +16,7 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Management</a></li>
-                                <li class="breadcrumb-item active">Buses</li>
+                                <li class="{{request()->routeIs('buses')? 'text-primary': ''}} breadcrumb-item active">Buses</li>
                             </ol>
                         </div>
 
@@ -36,7 +37,7 @@
                                 <div class="row g-4">
                                     <div class="col-sm-auto">
                                         <div>
-                                            <a href="{{route('add-bus')}}" class="btn btn-primary"
+                                            <a href="{{route('buses-add')}}" class="btn btn-primary"
                                                 id="addproduct-btn"><i class="ri-add-line align-bottom me-1"></i> Add Bus</a>
                                         </div>
                                     </div>
@@ -76,7 +77,7 @@
                                                                 <th data-column-id="stock"
                                                                     class="gridjs-th gridjs-th-sort text-muted"
                                                                     style="width: 100px;" tabindex="0">
-                                                                    <div class="gridjs-th-content">Stock</div>
+                                                                    <div class="gridjs-th-content">Seats</div>
                                                                 </th>
                                                                 <th data-column-id="price"
                                                                     class="gridjs-th gridjs-th-sort text-muted"
@@ -102,13 +103,13 @@
                                                         </thead>
 
                                                         <!-- foreach here -->
-                                                        
+                                                        @foreach($buses as $bus)
                                                         <tbody class="gridjs-tbody">
                                                             <!-- Product starts -->
                                                             <tr class="gridjs-tr">
                                                                 <td class="gridjs-td">
                                                                     
-                                                                    <p>Id</p>
+                                                                    <p>{{$bus->id}}</p>
 
                                                                 </td>
 
@@ -116,25 +117,25 @@
                                                                         <div class="d-flex align-items-center">
                                                                             <div class="flex-shrink-0 me-3">
                                                                                 <div class="avatar-sm bg-light rounded p-1">                                                                                    
-                                                                                    <img src="#"
+                                                                                    <img src="{{$bus->image}}"
                                                                                         alt="" class="img-fluid d-block">
                                                                                 </div>
                                                                             </div>
                                                                             <!-- Product Details Link by product heading -->
                                                                             <div class="flex-grow-1">
                                                                                 <h5 class="fs-14 mb-1"><a href="{{url('#')}}"
-                                                                                        class="text-body">Product Title</a>
+                                                                                        class="text-body">{{$bus->busName}}</a>
                                                                                 </h5>
-                                                                                Category : <span class="fw-medium">Category Name</span>
+                                                                                Category : <span class="fw-medium">{{$bus->busType}}</span>
                                                                             </div>
                                                                         </div>
                                                                     </span>
                                                                 </td>
                                                                 <!-- Stock -->
-                                                                <td data-column-id="stock" class="gridjs-td">Bus Stock</td>
+                                                                <td data-column-id="stock" class="gridjs-td">Seats: {{$bus->totalSeat}}</td>
                                                                 <!-- Price -->
                                                                 <td data-column-id="price" class="gridjs-td">
-                                                                    <span>Bus Number</span>
+                                                                    <span>Number: {{$bus->busNumber}}</span>
                                                                 </td>
                                                                 <td data-column-id="rating" class="gridjs-td">
                                                                     <span class="badge bg-light text-body fs-12 fw-medium">
@@ -142,7 +143,7 @@
                                                                 </td>
                                                                 <!-- Published Date -->
                                                                 <td data-column-id="published" class="gridjs-td">
-                                                                    <small class="text-muted ms-1">Entry Date</small>
+                                                                    <small class="text-muted ms-1">{{$bus->created_at}}</small>
                                                                 </td>
 
                                                                 <!-- Actions -->
@@ -153,12 +154,14 @@
                                                                                     aria-expanded="false"><i class="ri-more-fill"></i>
                                                                             </button>
                                                                             <ul class="dropdown-menu dropdown-menu-end">
+
+                                                                                <!-- Views Action -->
                                                                                 <li>
-                                                                                    <a class="dropdown-item" href="{{url('#')}}"><i
+                                                                                    <a class="dropdown-item" href="{{route('bus.details', $bus->id)}}"><i
                                                                                             class="ri-eye-fill align-bottom me-2 text-muted"></i>Details</a>
                                                                                 </li>
-                                                                                <li><a class="dropdown-item edit-list" data-edit-id="1" href="{{url('#')}}"><i
-                                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>Edit</a>
+                                                                                <li><a class="dropdown-item edit-list" data-edit-id="1" href="{{route('bus-update', $bus->id)}}"><i
+                                                                                            class="ri-pencil-fill align-bottom me-2 text-muted"></i>Update</a>
                                                                                 </li>
                                                                                 <li class="dropdown-divider"></li>
                                                                                 
@@ -177,7 +180,7 @@
                                                             </tr>
                                                             <!-- Product Ends -->
                                                         </tbody>
-
+                                                        @endforeach
                                                         <!-- foreach End-->
 
                                                     </table>

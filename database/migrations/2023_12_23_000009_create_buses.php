@@ -13,9 +13,10 @@ return new class extends Migration
     {
         Schema::create('buses', function (Blueprint $table) {
             $table->id();
+            $table->string('image')->nullable();
             $table->string('busName');
             $table->string('busType');
-            $table->string('totalSeat');
+            $table->integer('totalSeat');
             $table->string('busNumber');
             //F-key
             $table->unsignedBigInteger('driver_id');

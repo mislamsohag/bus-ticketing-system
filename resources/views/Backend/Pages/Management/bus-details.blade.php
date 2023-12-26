@@ -8,12 +8,12 @@
             <div class="row">
                 <div class="col-12">
                     <div class="page-title-box d-sm-flex align-items-center justify-content-between">
-                        <h4 class="mb-sm-0">Product Details</h4>
+                        <h4 class="mb-sm-0">Bus Details</h4>
 
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0">
                                 <li class="breadcrumb-item"><a href="javascript: void(0);">Ecommerce</a></li>
-                                <li class="breadcrumb-item active"><a class="btn btn-soft-primary" href="{{route('products')}}">Back to Products</a></li>
+                                <li class="breadcrumb-item active"><a class="btn btn-soft-primary" href="{{route('buses')}}">Back to Buses</a></li>
                             </ol>
                         </div>
 
@@ -34,16 +34,16 @@
                                         <div class="swiper product-thumbnail-slider p-2 rounded bg-light">
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
-                                                    <img src="{{asset($product->image)}}" alt="" class="img-fluid d-block" />
+                                                    <img src="{{$bus->image}}" alt="" class="img-fluid d-block" />
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <img src="{{asset('assets')}}/images/products/img-6.png" alt="" class="img-fluid d-block" />
+                                                    <img src="{{$bus->image}}" alt="" class="img-fluid d-block" />
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <img src="{{asset('assets')}}/images/products/img-1.png" alt="" class="img-fluid d-block" />
+                                                    <img src="{{$bus->image}}" alt="" class="img-fluid d-block" />
                                                 </div>
                                                 <div class="swiper-slide">
-                                                    <img src="{{asset('assets')}}/images/products/img-8.png" alt="" class="img-fluid d-block" />
+                                                    {{-- <img src="{{asset('assets')}}/images/products/img-8.png" alt="" class="img-fluid d-block" /> --}}
                                                 </div>
                                             </div>
                                             <div class="swiper-button-next"></div>
@@ -55,7 +55,7 @@
                                             <div class="swiper-wrapper">
                                                 <div class="swiper-slide">
                                                     <div class="nav-slide-item ">
-                                                        <img src="{{asset($product->image)}}" alt="" class="img-fluid d-block" />
+                                                        <img src="{{$bus->image}}" alt="" class="img-fluid d-block" />
                                                     </div>
                                                 </div>
                                                 <div class="swiper-slide">
@@ -86,20 +86,20 @@
                                             <div class="flex-grow-1">
 
                                                 <!-- Product Title -->
-                                                <h4>{{$product->title}}</h4>
+                                                <h4>{{$bus->busName}}</h4>
                                                 <div class="hstack gap-3 flex-wrap">
-                                                    <div><a href="#" class="text-primary d-block">{{$brand->brand_name}}</a></div>
+                                                    <div><a href="#" class="text-primary d-block">{{$bus->busName}}</a></div>
                                                     <div class="vr"></div>
                                                     <div class="text-muted">Seller : <span class="text-body fw-medium">Zoetic Fashion</span>
                                                     </div>
                                                     <div class="vr"></div>
-                                                    <div class="text-muted">Published : <span class="text-body fw-medium">{{$product->created_at}}</span>
+                                                    <div class="text-muted">Published : <span class="text-body fw-medium">{{$bus->created_at}}</span>
                                                     </div>
                                                 </div>
                                             </div>
                                             <div class="flex-shrink-0">
                                                 <div>
-                                                    <a href="{{route('add-product')}}" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Product Add"><i class="ri-pencil-fill align-bottom"></i></a>
+                                                    <a href="{{route('buses-add')}}" class="btn btn-light" data-bs-toggle="tooltip" data-bs-placement="top" title="Product Add"><i class="ri-pencil-fill align-bottom"></i></a>
                                                 </div>
                                             </div>
                                         </div>
@@ -127,7 +127,7 @@
                                                         </div>
                                                         <div class="flex-grow-1">
                                                             <p class="text-muted mb-1">Price :</p>
-                                                            <h5 class="mb-0">${{$product->price}}</h5>
+                                                            <h5 class="mb-0">${{$bus->price}}</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -162,7 +162,7 @@
                                                         <!-- Stock Show -->
                                                         <div class="flex-grow-1">
                                                             <p class="text-muted mb-1">Available Stocks :</p>
-                                                            <h5 class="mb-0">{{$product->stock}}</h5>
+                                                            <h5 class="mb-0">{{$bus->stock}}</h5>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -192,7 +192,7 @@
                                         <div class="row">
                                             <div class="col-xl-6">
                                                 <div class=" mt-4">
-                                                    <h5 class="fs-14">Sizes :</h5>
+                                                    <h5 class="fs-14">Seats : {{$bus->totalSeat}}</h5>
                                                     <div class="d-flex flex-wrap gap-2">
                                                         <div data-bs-toggle="tooltip" data-bs-trigger="hover" data-bs-placement="top" title="Out of Stock">
                                                             <input type="radio" class="btn-check" name="productsize-radio" id="productsize-radio1" disabled>
@@ -271,7 +271,7 @@
                                         <!-- Product Description Show -->
                                         <div class="mt-4 text-muted">
                                             <h5 class="fs-14">Description :</h5>
-                                            <p>{{$product->short_desc}}</p>
+                                            <p>{{$bus->busName}}</p>
                                         </div>
 
                                         <div class="row">
@@ -280,13 +280,13 @@
                                                     <h5 class="fs-14">Features :</h5>
                                                     <ul class="list-unstyled">
                                                         <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
-                                                            Full Sleeve</li>
+                                                            Sleaper</li>
                                                         <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
-                                                            Cotton</li>
+                                                            Luxary Travels</li>
                                                         <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
-                                                            All Sizes available</li>
+                                                            Routes available</li>
                                                         <li class="py-1"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
-                                                            4 Different Color</li>
+                                                            24 hr. Services</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -294,8 +294,8 @@
                                                 <div class="mt-3">
                                                     <h5 class="fs-14">Services :</h5>
                                                     <ul class="list-unstyled product-desc-list">
-                                                        <li class="py-1">10 Days Replacement</li>
-                                                        <li class="py-1">Cash on Delivery available</li>
+                                                        <li class="py-1">Refund Policy is Good</li>
+                                                        <li class="py-1">Customers Happyness is our moto</li>
                                                     </ul>
                                                 </div>
                                             </div>
@@ -303,7 +303,7 @@
 
 
                                         <div class="product-content mt-5">
-                                            <h5 class="fs-14 mb-3">Product Description :</h5>
+                                            <h5 class="fs-14 mb-3">Bus Description :</h5>
                                             <nav>
                                                 <ul class="nav nav-tabs nav-tabs-custom nav-primary" id="nav-tab" role="tablist">
                                                     <li class="nav-item">
@@ -322,23 +322,23 @@
                                                                 <tr>
                                                                     <th scope="row" style="width: 200px;">
                                                                         Category</th>
-                                                                    <td>{{$category->categoryName}}</td>
+                                                                    <td>{{$bus->busType}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">Brand</th>
-                                                                    <td>{{$brand->brand_name}}</td>
+                                                                    <td>{{$bus->busName}}</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">Color</th>
-                                                                    <td>Blue</td>
+                                                                    <td>Royel White</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">Material</th>
-                                                                    <td>Cotton</td>
+                                                                    <td>Hundy</td>
                                                                 </tr>
                                                                 <tr>
                                                                     <th scope="row">Weight</th>
-                                                                    <td>140 Gram</td>
+                                                                    <td>140 tn</td>
                                                                 </tr>
                                                             </tbody>
                                                         </table>
@@ -348,8 +348,8 @@
                                                 <!-- Product Details with description -->
                                                 <div class="tab-pane fade" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
                                                     <div>
-                                                        <h5 class="font-size-16 mb-3">{{$product->title}}</h5>
-                                                        <p>{{$product->short_desc}}</p>
+                                                        <h5 class="font-size-16 mb-3">{{$bus->busName}}</h5>
+                                                        <p>{{$bus->short_desc}}</p>
                                                         <div>
                                                             <p class="mb-2"><i class="mdi mdi-circle-medium me-1 text-muted align-middle"></i>
                                                                 Machine Wash</p>

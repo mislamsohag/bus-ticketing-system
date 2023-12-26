@@ -20,20 +20,21 @@ Route::group(["prefix" => "admin"], function () {
     Route::get("/", [AdminHomeController::class, "AdminHome"])->name('admin.home');
     Route::get("/analytics", [DashboardController::class, "DashboardAnalytics"])->name('dashboard.analytics'); 
 
+    // All Buses
+    Route::get("/buses", [BusController::class, "Buses"])->name('buses');
 
-    //Add Bus Show Rotue
+    //Add Bus
     Route::view("/buses-add", "Backend.Pages.Management.add-bus")->name('buses-add'); 
-    
+    // Bus Store
     Route::post("/buses-store", [StoreController::class, "Store"])->name('buses-store');
         
     
-    Route::get("/buses", [BusController::class, "Buses"])->name('buses');
-    // Single Product Details Show
-     Route::get("/product-details/{id}", [BusController::class, "ProductDetails"])->name('product.details');
+    // Bus Details Show
+     Route::get("/bus-details/{id}", [BusController::class, "BusDetails"])->name('bus.details');
     // Edit Product Show
-    Route::get("/product-edit/{id}", [BusController::class, "ProductEditShow"])->name('product.edit');
+    Route::get("/bus-update/{id}", [BusController::class, "updateShow"])->name('bus-update');
     // Update Product
-    Route::post("/product-update/{id}", [BusController::class, "ProductUpdate"])->name('product.update');
+    Route::post("/bus.update/{id}", [BusController::class, "BusUpdate"])->name('bus.update');
     
      // Single product Delete
     Route::delete("/product-destroy/{id}", [BusController::class, "Destroy"])->name('product.destroy');

@@ -8,7 +8,7 @@
     <div class="collapse menu-dropdown" id="sidebarApps">
       <ul class="nav nav-sm flex-column">
         <li class="nav-item">
-          <a href="{{route('buses')}}" class="nav-link" data-key="t-products">
+          <a href="{{route('buses')}}" class="{{request()->routeIs('buses')? 'text-primary': ''}} nav-link" data-key="t-products">
             Buses
           </a>
         </li>
@@ -18,26 +18,28 @@
              Bus Add
           </a>
         </li>
+        
+        <li class="nav-item">
+          <a href="{{route('passagers')}}" class="{{request()->routeIs('passagers')? 'text-primary': ''}} nav-link" data-key="t-customers">
+            Passagers
+          </a>
+        </li>
         <!-- Order Product -->
         <li class="nav-item">
-          <a href="{{route('sales')}}" class="nav-link" data-key="t-orders">
+          <a href="{{route('sales')}}" class="{{request()->routeIs('sales')? 'text-primary': ''}} nav-link" data-key="t-orders">
             My Sales
           </a>
         </li>
         <!-- Order-details -->
         <li class="nav-item">
-          <a href="{{route('parcels')}}" class="nav-link" data-key="t-order-details">
+          <a href="{{route('parcels')}}" class="{{request()->routeIs('parcels')? 'text-primary': ''}} nav-link" data-key="t-order-details">
             Parcels Details
           </a>
         </li>
-        <li class="nav-item">
-          <a href="{{route('passagers')}}" class="nav-link" data-key="t-customers">
-            Passagers
-          </a>
-        </li>
+        
         
         <li class="nav-item">
-          <a href="{{route('profiles')}}" class="nav-link" data-key="t-sellers-details">
+          <a href="{{route('profiles')}}" class="{{request()->routeIs('profiles')? 'text-primary': ''}} nav-link" data-key="t-sellers-details">
             Profiles
           </a>
         </li>
